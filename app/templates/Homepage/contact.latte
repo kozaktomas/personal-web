@@ -1,0 +1,85 @@
+{block title}Contact me{/block}
+{block content}
+    <div class="col-md-8">
+        <div class="inside-sec">
+            <section>
+
+                <!-- Contact  -->
+                <h5 class="tittle">SAY HELLO</h5>
+                <div class="contact style-3 light-border padding-top-50 padding-bottom-50 padding-left-20 padding-right-20">
+
+                    <div class="contact-right">
+                        {form contactForm id=>'contact_form', class=>'contact-form'}
+                            <ul class="row">
+                                <li class="col-sm-12">
+                                    <label>
+                                        {input name placeholder=>'Name', class=>'form-control'}
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    <label>
+                                        {input email placeholder=>'Email', class=>'form-control'}
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    <label>
+                                        {input content placeholder=>'Your message', class=>'form-control'}
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
+                                    {input send class=>'contact-form-button'}
+                                </li>
+                            </ul>
+                        {/form contactForm}
+                    </div>
+                </div>
+
+                <div class="padding-left-30 padding-right-30 padding-top-50 padding-bottom-50">
+                    <div class="row ">
+                        <div class="col-md-4 text-center">
+                            <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
+                                <div class="ib-icon"><i class="fa fa-slack text-primary"></i></div>
+                                <div class="ib-info text-dark">
+                                    <p>Kiwi: tomas.kozak</p>
+                                    <p>Pehapkari: tomas.kozak</p>
+                                    <p>Gophers: tomas.kozak</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number  -->
+                        <div class="col-md-4 text-center">
+                            <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-xlarge dark-text">
+                                <div class="ib-icon"><i class="fa fa-mobile text-primary"></i></div>
+                                <div class="ib-info text-dark">
+                                    <p>+420 730996957</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+
+
+                        <!-- Email  -->
+                        <div class="col-md-4 text-center">
+                            <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
+                                <div class="ib-icon"><i class="fa fa-envelope-o text-primary"></i></div>
+                                <div class="ib-info text-dark">
+                                    <p class="no-margin-bottom">
+                                        <a href="mailto:kozak@talko.cz" class="text-white">kozak@talko.cz</a>
+                                    </p>
+                                    <p class="no-margin-bottom">
+                                        <a href="mailto:tomas.kozak@kiwi.com"
+                                           class="text-white">tomas.kozak@kiwi.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+        </div>
+    </div>
+{/block}

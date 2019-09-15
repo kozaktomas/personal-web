@@ -1,0 +1,78 @@
+<?php
+
+namespace Kozak\Tomas\App\Presenters;
+
+
+use Kozak\Tomas\App\Model\Mailer;
+use Kozak\Tomas\App\Model\MailerException;
+use Nette\Application\UI\Form;
+
+class HomepagePresenter extends BasePresenter
+{
+
+	/** @var Mailer */
+	private $mailer;
+
+	/**
+	 * @param Mailer $mailer
+	 */
+	public function __construct(Mailer $mailer)
+	{
+		parent::__construct();
+		$this->mailer = $mailer;
+	}
+
+	protected function beforeRender()
+	{
+		parent::beforeRender();
+		$this->template->age = $this->getAge();
+	}
+
+	/**
+	 * @return Form
+	 */
+	public function createComponentContactForm(): Form
+	{
+		$form = new Form();
+		$form->addText('name', 'Name')
+			->setMaxLength(200);
+		$form->addText('email', 'Email')
+			->setMaxLength(200);
+		$form->addTextArea('content', 'Content')
+			->setMaxLength(5000)
+			->isRequired();
+		$form->addSubmit('send', 'SEND MESSAGE');
+		$form->onSuccess[] = function () use ($form) {
+			$this->contactFormSubmitted($form);
+		};
+
+		return $form;
+	}
+
+	/**
+	 * @param Form $form
+	 * @throws \Nette\Application\AbortException
+	 * @throws \SendGrid\Mail\TypeException
+	 */
+	private function contactFormSubmitted(Form $form): void
+	{
+		$values = $form->values;
+		try {
+			$this->mailer->contactFormEmail($values->name, $values->email, $values->content);
+		} catch (MailerException $exception) {
+			$this->flashMessage('Could not send message to Tomas. Please try to contact him via email.');
+			$this->redirect('this');
+		}
+		$this->flashMessage('Thank You. Your Message has been Submitted');
+		$this->redirect('this');
+	}
+
+	private function getAge(): int
+	{
+		$tz = new \DateTimeZone('Europe/Prague');
+		$age = \DateTime::createFromFormat('d/m/Y', '21/04/1991', $tz)
+			->diff(new \DateTime('now', $tz))
+			->y;
+		return $age;
+	}
+}

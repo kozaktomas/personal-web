@@ -1,0 +1,16 @@
+php:
+	date.timezone: Europe/Prague
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: Kozak\Tomas\App\*Module\Presenters\*Presenter
+
+session:
+	autoStart: false
+	savePath: %tempDir%/sessions
+
+services:
+	routerFactory: Kozak\Tomas\App\Router\RouterFactory
+	router: @routerFactory::createRouter
+	- Kozak\Tomas\App\Model\Mailer

@@ -1,0 +1,22 @@
+{
+    "name": "kozaktomas/personal-web",
+    "description": "kozak.in website",
+    "homepage": "https://kozak.in",
+    "type": "project",
+    "require": {
+        "php": ">= 7.3",
+        "nette/nette": "~3.0",
+        "sendgrid/sendgrid": "^7.3"
+    },
+    "require-dev": {
+        "nette/tester": "~2.3",
+        "phpstan/phpstan": "^0.11.15",
+        "phpstan/phpstan-nette": "^0.11.1"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Kozak\\Tomas\\App\\": "app/"
+        }
+    }
+}
