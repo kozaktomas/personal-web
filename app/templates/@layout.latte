@@ -224,7 +224,10 @@
     <footer class="footer">
         <div class="rights">
             {var $today = new \DateTime()}
-            <p>© {$today->format('Y')} Tomas Kozak.</p>
+            <p>
+                © {$today->format('Y')} Tomas Kozak.
+                <a href="https://gitlab.com/kozaktomas/personal-web" target="_blank">Source code</a>
+            </p>
         </div>
     </footer>
     {* End Footer *}

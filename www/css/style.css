@@ -2919,3 +2919,11 @@ blockquote {
 .skill-gif {
 	max-width: 100%;
 }
+
+.footer a {
+	color: #808080;
+}
+
+.footer a:hover {
+	color: #AAA;
+}
