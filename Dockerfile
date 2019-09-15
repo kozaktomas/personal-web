@@ -3,8 +3,7 @@ FROM php:7.3-apache-buster
 RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
 
 ADD docker/virtual_host_prod.conf /etc/apache2/sites-available/000-default.conf
-RUN a2enmod rewrite
-RUN a2enmod expires
+RUN a2enmod rewrite && a2enmod headers && a2enmod expires
 
 # opcache
 RUN docker-php-ext-install opcache
