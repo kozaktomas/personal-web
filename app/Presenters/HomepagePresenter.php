@@ -26,6 +26,7 @@ class HomepagePresenter extends BasePresenter
 	{
 		parent::beforeRender();
 		$this->template->age = $this->getAge();
+		$this->template->googleAnalytics = !(bool)\getenv('DEV');
 	}
 
 	/**
