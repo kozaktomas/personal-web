@@ -13,4 +13,4 @@ session:
 services:
 	routerFactory: Kozak\Tomas\App\Router\RouterFactory
 	router: @routerFactory::createRouter
-	- Kozak\Tomas\App\Model\Mailer
+	- Kozak\Tomas\App\Model\Mailer(::\getenv('SENDGRID_API_KEY'))

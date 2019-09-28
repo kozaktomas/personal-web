@@ -69,12 +69,24 @@ class HomepagePresenter extends BasePresenter
 		$this->redirect('this');
 	}
 
+	/**
+	 * @return int
+	 * @throws \Exception
+	 */
 	private function getAge(): int
 	{
 		$tz = new \DateTimeZone('Europe/Prague');
-		$age = \DateTime::createFromFormat('d/m/Y', '21/04/1991', $tz)
-			->diff(new \DateTime('now', $tz))
-			->y;
+		$born = \DateTime::createFromFormat('d/m/Y', '21/04/1991', $tz);
+		$now = new \DateTime('now', $tz);
+
+		if (!$born instanceof \DateTime) {
+			throw new \Exception('Could not parse date of birth.');
+		}
+		if (!$born instanceof \DateTime) {
+			throw new \Exception('Could not create now DateTime.');
+		}
+
+		$age = $born->diff($now)->y;
 		return $age;
 	}
 }

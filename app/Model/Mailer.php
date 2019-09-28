@@ -14,6 +14,17 @@ class Mailer
 		EMAIL_SUBJECT = 'Contact from - Kozak.in',
 		EMAIL_BODY = "<b>Name:</b> %s<br><b>Email:</b> %s<br><br>%s";
 
+	/** @var string */
+	private $sendgridApiKey;
+
+	/**
+	 * @param string $sendgridApiKey
+	 */
+	public function __construct(string $sendgridApiKey)
+	{
+		$this->sendgridApiKey = $sendgridApiKey;
+	}
+
 	/**
 	 * @param string $name
 	 * @param string $email
@@ -41,6 +52,6 @@ class Mailer
 
 	private function getMailer(): \SendGrid
 	{
-		return new \SendGrid(getenv('SENDGRID_API_KEY'));
+		return new \SendGrid($this->sendgridApiKey);
 	}
 }
