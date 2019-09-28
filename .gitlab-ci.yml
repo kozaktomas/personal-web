@@ -13,6 +13,7 @@ stan:
   image: php:7.3-cli
   stage: test
   script:
+    - apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/bin --filename=composer
     - composer install
