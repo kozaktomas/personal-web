@@ -191,6 +191,13 @@
                                     <div class="contact padding-25">
 
                                         {form contactForm id=>'contact_form', class=>'contact-form'}
+                                            {if $form->hasErrors()}
+                                                {foreach $form->getErrors() as $error}
+                                                    <div class="alert alert-danger">
+                                                        {$error}
+                                                    </div>
+                                                {/foreach}
+                                            {/if}
                                             <ul class="row">
                                                 <li class="col-sm-12">
                                                     <label>

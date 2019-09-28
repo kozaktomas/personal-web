@@ -9,6 +9,13 @@
 
                     <div class="contact-right">
                         {form contactForm id=>'contact_form_main', class=>'contact-form'}
+                            {if $form->hasErrors()}
+                                {foreach $form->getErrors() as $error}
+                                    <div class="alert alert-danger">
+                                        {$error}
+                                    </div>
+                                {/foreach}
+                            {/if}
                             <ul class="row">
                                 <li class="col-sm-12">
                                     <label>

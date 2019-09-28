@@ -42,7 +42,7 @@ class HomepagePresenter extends BasePresenter
 		$form->addTextArea('content', 'Content')
 			->setMaxLength(5000)
 			->setRequired('Write something.')
-			->addRule(Form::MIN_LENGTH, 'Your message has to be at least %d long', 5);
+			->addRule(Form::MIN_LENGTH, 'Your message has to be at least %d characters long', 5);
 		$form->addSubmit('send', 'SEND MESSAGE');
 		$form->onSuccess[] = function () use ($form) {
 			$this->contactFormSubmitted($form);
