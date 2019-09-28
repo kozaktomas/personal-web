@@ -22,7 +22,7 @@ class HomepagePresenter extends BasePresenter
 		$this->mailer = $mailer;
 	}
 
-	protected function beforeRender()
+	protected function beforeRender(): void
 	{
 		parent::beforeRender();
 		$this->template->age = $this->getAge();
@@ -41,7 +41,8 @@ class HomepagePresenter extends BasePresenter
 			->setMaxLength(200);
 		$form->addTextArea('content', 'Content')
 			->setMaxLength(5000)
-			->isRequired();
+			->setRequired('Write something.')
+			->addRule(Form::MIN_LENGTH, 'Your message has to be at least %d long', 5);
 		$form->addSubmit('send', 'SEND MESSAGE');
 		$form->onSuccess[] = function () use ($form) {
 			$this->contactFormSubmitted($form);

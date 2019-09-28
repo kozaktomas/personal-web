@@ -39,7 +39,7 @@ class Mailer
 		}
 	}
 
-	private function getMailer()
+	private function getMailer(): \SendGrid
 	{
 		return new \SendGrid(getenv('SENDGRID_API_KEY'));
 	}
