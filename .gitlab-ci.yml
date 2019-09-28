@@ -13,6 +13,9 @@ stan:
   image: php:7.3-cli
   stage: test
   script:
+    - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    - php composer-setup.php --install-dir=/bin --filename=composer
+    - composer install
     - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
 build:
