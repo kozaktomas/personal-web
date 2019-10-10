@@ -5,36 +5,44 @@ namespace Kozak\Tomas\App\Presenters;
 use Nette,
 	Tracy\Debugger;
 
-
-/**
- * Error presenter.
- */
 class ErrorPresenter extends BasePresenter
 {
+
+	private static $messages = [
+		0 => 'Server error with no cool message',
+		404 => 'This page has been stolen!',
+		500 => 'On no! My code is not working properly. It\'s disaster. But it\'s open source and you can fix it!',
+	];
 
 	/**
 	 * @param \Exception $exception
 	 * @return void
-	 * @throws Nette\Application\AbortException
 	 */
-	public function renderDefault(\Exception $exception)
+	public function renderDefault(\Exception $exception): void
 	{
+		Debugger::log($exception, Debugger::ERROR);
+		$this->setView('error');
+
+		$code = 500;
 		if ($exception instanceof Nette\Application\BadRequestException) {
 			$code = $exception->getCode();
-			// load template 403.latte or 404.latte or ... 4xx.latte
-			$this->setView(in_array($code, array(403, 404, 405, 410, 500)) ? $code : '4xx');
-			// log to access.log
-			Debugger::log("HTTP code $code: {$exception->getMessage()} in {$exception->getFile()}:{$exception->getLine()}", 'access');
-
-		} else {
-			$this->setView('500'); // load template 500.latte
-			Debugger::log($exception, Debugger::EXCEPTION); // and log exception
 		}
 
-		if ($this->isAjax()) { // AJAX request? Note this error in payload.
-			$this->payload->error = TRUE;
-			$this->terminate();
+		$this->setVariables($code);
+	}
+
+	/**
+	 * @param int $code
+	 */
+	private function setVariables(int $code): void
+	{
+		$index = 0;
+		if (isset(self::$messages[$code])) {
+			$index = $code;
 		}
+
+		$this->template->message = self::$messages[$index];
+		$this->template->code = $code;
 	}
 
 }

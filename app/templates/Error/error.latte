@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Tomas Kozak"/>
+    <title>Error page | Tomas Kozak</title>
+    <meta name="description"
+          content="Tomas Kozak - programmer, developer, speaker, devops, platform. You can find more information on website https://kozak.in.">
+    <meta name="keywords" content="tomas, kozak, developer, programmer, php, docker, kubernetes, go">
+
+    <link rel="stylesheet" href="/css/error.css">
+
+    {* favicons *}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+{block|strip}
+
+    <div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>{$code}</h1>
+			</div>
+			<h2>{$message}</h2>
+			<a n:href="Homepage:default">Go To Homepage</a>
+		</div>
+	</div>
+
+
+{/block}
+</body>
+</html>
