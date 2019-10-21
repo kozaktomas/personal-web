@@ -7,6 +7,9 @@ up:
 	docker-compose up -d
 	@echo "App is running on http://localhost:8091"
 
+test:
+	php vendor/bin/phpstan analyse -c phpstan.neon -l max app
+
 stop:
 	docker-compose stop
 
