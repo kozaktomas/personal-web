@@ -5,6 +5,7 @@ up:
 	mkdir -p log
 	composer install
 	docker-compose up -d
+	@echo "App is running on http://localhost:8091"
 
 stop:
 	docker-compose stop
