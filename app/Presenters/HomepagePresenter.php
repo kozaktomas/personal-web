@@ -5,6 +5,7 @@ namespace Kozak\Tomas\App\Presenters;
 
 use Kozak\Tomas\App\Model\Mailer;
 use Kozak\Tomas\App\Model\MailerException;
+use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 
 class HomepagePresenter extends BasePresenter
@@ -53,7 +54,7 @@ class HomepagePresenter extends BasePresenter
 
 	/**
 	 * @param Form $form
-	 * @throws \Nette\Application\AbortException
+	 * @throws AbortException
 	 * @throws \SendGrid\Mail\TypeException
 	 */
 	private function contactFormSubmitted(Form $form): void
@@ -88,5 +89,13 @@ class HomepagePresenter extends BasePresenter
 
 		$age = $born->diff($now)->y;
 		return $age;
+	}
+
+	/**
+	 * @throws AbortException
+	 */
+	public function actionSpeeches(): void
+	{
+		$this->redirectPermanent('talks');
 	}
 }

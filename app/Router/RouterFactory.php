@@ -24,6 +24,7 @@ class RouterFactory
 		$router[] = new Nette\Application\Routers\Route('/contact', 'Homepage:contact');
 		$router[] = new Nette\Application\Routers\Route('/my-setup', 'Homepage:setup');
 		$router[] = new Nette\Application\Routers\Route('/speeches', 'Homepage:speeches');
+		$router[] = new Nette\Application\Routers\Route('/talks', 'Homepage:talks');
 
 		$router[] = new SimpleRouter('Homepage:default');
 		return $router;
