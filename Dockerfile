@@ -26,4 +26,4 @@ RUN mkdir -p /var/www/html/temp/cache \
     && chmod -R 777 /var/www/html/temp \
     && chmod -R 777 /var/www/html/log
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader && php -v
