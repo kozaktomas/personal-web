@@ -7,7 +7,7 @@ application:
 		*: Kozak\Tomas\App\*Module\Presenters\*Presenter
 
 session:
-	autoStart: false
+	autoStart: true
 	savePath: %tempDir%/sessions
 
 services:
