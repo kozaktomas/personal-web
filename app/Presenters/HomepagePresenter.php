@@ -45,6 +45,7 @@ class HomepagePresenter extends BasePresenter
 			->setRequired('Write something.')
 			->addRule(Form::MIN_LENGTH, 'Your message has to be at least %d characters long', 5);
 		$form->addSubmit('send', 'SEND MESSAGE');
+		$form->addProtection('Please submit form once again.');
 		$form->onSuccess[] = function () use ($form) {
 			$this->contactFormSubmitted($form);
 		};
