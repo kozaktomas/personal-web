@@ -1,4 +1,4 @@
-FROM php:7.3-apache-buster
+FROM php:7.4-apache-buster
 
 RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
 
