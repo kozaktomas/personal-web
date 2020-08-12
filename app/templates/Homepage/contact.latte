@@ -33,6 +33,13 @@
                                     </label>
                                 </li>
                                 <li class="col-sm-12">
+                                    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+                                    <p>\[\int_{$captcha[lower]}^{$captcha[upper]} ({$captcha[d3]}x^3 + {$captcha[d0]})  dx\]</p>
+                                    <label>
+                                        {input captcha placeholder=>'Result of definite integral', class=>'form-control', id=>''}
+                                    </label>
+                                </li>
+                                <li class="col-sm-12">
                                     {input send class=>'contact-form-button', id=>'contact_form_main_button'}
                                 </li>
                             </ul>

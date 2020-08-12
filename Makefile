@@ -8,6 +8,7 @@ up:
 	@echo "App is running on http://localhost:8091"
 
 test:
+	php vendor/bin/tester tests/
 	php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
 stop:

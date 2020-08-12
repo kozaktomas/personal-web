@@ -18,6 +18,7 @@ stan:
     - php composer-setup.php --install-dir=/bin --filename=composer
     - composer install
     - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
+    - php vendor/bin/tester tests/
 
 build:
   image: docker:stable
