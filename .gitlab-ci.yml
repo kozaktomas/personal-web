@@ -9,7 +9,7 @@ cache:
   paths:
     - vendor/
 
-stan:
+test:
   image: php:7.4-cli
   stage: test
   script:
