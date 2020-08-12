@@ -10,7 +10,7 @@ cache:
     - vendor/
 
 stan:
-  image: php:7.3-cli
+  image: php:7.4-cli
   stage: test
   script:
     - apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
