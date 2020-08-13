@@ -114,6 +114,19 @@
                         {* Resume *}
                         <div class="row">
 
+                            <div n:if="$flashes" class="col-md-12">
+                                <div class="inside-sec">
+                                    {foreach $flashes as $flash}
+                                        <div id="contact_message" class="success-msg">
+                                            <i class="fa fa-paper-plane-o"></i>
+                                            {$flash->message}
+                                        </div>
+                                    {/foreach}
+                                </div>
+                            </div>
+
+                            {include content}
+
                             {* Sidebar *}
                             <div class="col-md-4">
                                 <div class="side-bar">
@@ -219,20 +232,6 @@
                                     *}
                                 </div>
                             </div>
-
-
-                            <div n:if="$flashes" class="col-md-8">
-                                <div class="inside-sec">
-                                    {foreach $flashes as $flash}
-                                        <div id="contact_message" class="success-msg">
-                                            <i class="fa fa-paper-plane-o"></i>
-                                            {$flash->message}
-                                        </div>
-                                    {/foreach}
-                                </div>
-                            </div>
-
-                            {include content}
 
                         </div>
                     </div>
