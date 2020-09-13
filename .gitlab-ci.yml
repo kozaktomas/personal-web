@@ -17,6 +17,10 @@ test:
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/bin --filename=composer
     - composer install
+    - mkdir -p /var/www/html/temp/cache
+    - mkdir -p /var/www/html/temp/sessions
+    - mkdir -p /var/www/html/temp/data
+    - mkdir -p /var/www/html/log
     - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
     - php vendor/bin/tester tests/
 
