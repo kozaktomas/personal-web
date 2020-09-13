@@ -76,7 +76,7 @@ final class UiTests extends TestCase {
     {
         $hp = $this->presenterFactory->createPresenter($presenter);
         $hp->autoCanonicalize = false;
-        $request = new Nette\Application\Request($presenter, 'GET', ['action' => $action]);
+        $request = new Nette\Application\Request($presenter, $action, ['action' => $action]);
 
         /** @var TextResponse $response */
         $response = $hp->run($request);
