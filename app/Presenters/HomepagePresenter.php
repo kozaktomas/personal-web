@@ -32,7 +32,7 @@ class HomepagePresenter extends BasePresenter
 		$this->template->googleAnalytics = !(bool)\getenv('DEV');
 	}
 
-	public function renderContact()
+	public function renderContact(): void
 	{
 		$captchaDto = $this->captchaService->getRandom();
 		$this
@@ -68,7 +68,7 @@ class HomepagePresenter extends BasePresenter
 		$form->addHidden('captchaSerialized');
 		$form->addSubmit('send', 'SEND MESSAGE');
 		$form->addProtection('Please submit form once again.');
-		$form->onSuccess[] = function () use ($form) {
+		$form->onSuccess[] = function (Form $form): void {
 			$this->contactFormSubmitted($form);
 		};
 

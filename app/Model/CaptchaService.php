@@ -6,12 +6,15 @@ namespace Kozak\Tomas\App\Model;
 
 final class CaptchaService
 {
-    // polynoms with int result
-    // formula - ax^3 + b
-    // [0] => a
-    // [1] => b
-    // [2] => upper limit
-    // [3] => lower limit
+    /**
+     * @var array<array<int>>
+     * polynoms with int result
+     * formula - ax^3 + b
+     * [0] => a
+     * [1] => b
+     * [2] => upper limit
+     * [3] => lower limit
+     */
     private static array $precoputed = [
         [2, 2, 4, 2],
         [2, 3, 4, 2],

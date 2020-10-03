@@ -8,7 +8,10 @@ use Nette,
 class ErrorPresenter extends BasePresenter
 {
 
-	private static $messages = [
+	/**
+	 * @var array<string>
+	 */
+	private static array $messages = [
 		0 => 'Server error with no cool message',
 		404 => 'This page has been stolen!',
 		500 => 'On no! My code is not working properly. It\'s disaster. But it\'s open source and you can fix it!',
