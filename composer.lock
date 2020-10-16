@@ -1419,16 +1419,16 @@
         },
         {
             "name": "sendgrid/php-http-client",
-            "version": "3.11.1",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/php-http-client.git",
-                "reference": "b7e45dc6734357253217d63bf0d661fe18013e48"
+                "reference": "22a3dc4dac617046004bbad2d329c0e0d9be7daf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/b7e45dc6734357253217d63bf0d661fe18013e48",
-                "reference": "b7e45dc6734357253217d63bf0d661fe18013e48",
+                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/22a3dc4dac617046004bbad2d329c0e0d9be7daf",
+                "reference": "22a3dc4dac617046004bbad2d329c0e0d9be7daf",
                 "shasum": ""
             },
             "require": {
@@ -1442,6 +1442,9 @@
                 "phpunit/phpunit": "^5.7 || ^6.5",
                 "sebastian/version": "^1.0.6",
                 "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "composer/ca-bundle": "Including this library will ensure that a valid CA bundle is available for secure connections"
             },
             "type": "library",
             "autoload": {
@@ -1472,20 +1475,20 @@
                 "rest",
                 "sendgrid"
             ],
-            "time": "2020-08-19T19:09:43+00:00"
+            "time": "2020-10-14T20:09:07+00:00"
         },
         {
             "name": "sendgrid/sendgrid",
-            "version": "7.8.4",
+            "version": "7.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/sendgrid-php.git",
-                "reference": "3b3ce1f516575bf22ea17501ea6afc9be43083bf"
+                "reference": "a4537666f29cf51c511ee896f4425764c74d8a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/3b3ce1f516575bf22ea17501ea6afc9be43083bf",
-                "reference": "3b3ce1f516575bf22ea17501ea6afc9be43083bf",
+                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/a4537666f29cf51c511ee896f4425764c74d8a63",
+                "reference": "a4537666f29cf51c511ee896f4425764c74d8a63",
                 "shasum": ""
             },
             "require": {
@@ -1533,7 +1536,7 @@
                 "sendgrid",
                 "twilio sendgrid"
             ],
-            "time": "2020-09-28T21:09:29+00:00"
+            "time": "2020-10-14T19:26:13+00:00"
         },
         {
             "name": "starkbank/ecdsa",
@@ -1718,16 +1721,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.48",
+            "version": "0.12.49",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666"
+                "reference": "9a6136c2b39d5214da78de37128d5fe08e5d5b05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d364cfbac9ffd869570cdfea7eaa6541c3dac666",
-                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9a6136c2b39d5214da78de37128d5fe08e5d5b05",
+                "reference": "9a6136c2b39d5214da78de37128d5fe08e5d5b05",
                 "shasum": ""
             },
             "require": {
@@ -1770,7 +1773,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-01T13:20:16+00:00"
+            "time": "2020-10-12T14:10:44+00:00"
         },
         {
             "name": "phpstan/phpstan-nette",
