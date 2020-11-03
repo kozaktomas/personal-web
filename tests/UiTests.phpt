@@ -60,7 +60,6 @@ final class UiTests extends TestCase {
         $html = (string) $response->getSource();
         Assert::contains('My setup', $html);
         Assert::contains('PHP Storm', $html);
-        Assert::contains('iPhone', $html);
     }
 
     public function testTalks() 
