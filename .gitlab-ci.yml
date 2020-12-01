@@ -1,6 +1,7 @@
 stages:
   - test
   - build
+  - deploy
 
 services:
   - docker:dind
@@ -10,10 +11,11 @@ cache:
     - vendor/
 
 test:
-  image: php:7.4-cli
+  image: php:8.0-cli
   stage: test
   script:
-    - apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
+    - apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev
+    - docker-php-ext-configure intl && docker-php-ext-install intl
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
     - php composer-setup.php --install-dir=/bin --filename=composer
     - composer install
