@@ -1,8 +1,10 @@
-FROM php:7.4-apache-buster
+FROM php:8.0-apache-buster
 
 RUN pecl install xdebug
 
-RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
+RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl
 
 # composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \

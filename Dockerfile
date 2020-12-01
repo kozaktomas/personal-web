@@ -1,6 +1,6 @@
-FROM php:7.4-apache-buster
+FROM php:8.0-apache-buster
 
-RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip
+RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev
 
 ADD docker/virtual_host_prod.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite && a2enmod headers && a2enmod expires
@@ -8,6 +8,10 @@ RUN a2enmod rewrite && a2enmod headers && a2enmod expires
 # opcache
 RUN docker-php-ext-install opcache
 ADD docker/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# intl
+RUN docker-php-ext-configure intl \
+    && docker-php-ext-install intl
 
 # composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
