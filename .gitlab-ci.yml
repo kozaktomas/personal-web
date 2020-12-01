@@ -23,8 +23,8 @@ test:
     - mkdir -p temp/sessions
     - mkdir -p temp/data
     - mkdir -p log
+    - php vendor/bin/tester -c tests/php.ini tests/
     - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
-    - php vendor/bin/tester tests/
 
 build:
   image: docker:stable

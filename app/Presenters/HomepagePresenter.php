@@ -122,8 +122,13 @@ class HomepagePresenter extends BasePresenter
 			throw new \Exception('Could not create now DateTime.');
 		}
 
-		$age = $born->diff($now)->y;
-		return $age;
+		$age = $born->diff($now);
+
+		if ($age === false) {
+		    throw new \Exception('Could not calculate age');
+        }
+
+		return $age->y;
 	}
 
 	/**

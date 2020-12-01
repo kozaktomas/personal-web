@@ -8,8 +8,9 @@ up:
 	@echo "App is running on http://localhost:8091"
 
 test:
-	php vendor/bin/tester tests/
-	php vendor/bin/phpstan analyse -c phpstan.neon -l max app
+	docker-compose up -d
+	docker-compose exec web php vendor/bin/tester -c tests/php.ini tests/
+	docker-compose exec web php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
 cmd:
 	docker-compose up -d
