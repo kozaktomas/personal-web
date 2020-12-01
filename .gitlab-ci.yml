@@ -47,6 +47,6 @@ deploy:
     - apk add --no-cache openssh-client ca-certificates bash
     - echo $DEPLOY_KEY | base64 -d > key
     - chmod 400 key
-    - ssh -i ${DEPLOY_USER}@${DEPLOY_SERVER_IP} 'docker pull ${CI_REGISTRY_IMAGE}:latest && cd wedos-vps && docker-compose stop kozak_in && docker-compose up -d kozak_in'
+    - ssh -i key -oStrictHostKeyChecking=no ${DEPLOY_USER}@${DEPLOY_SERVER_IP} 'docker pull registry.gitlab.com/kozaktomas/personal-web:latest && cd wedos-vps && docker-compose stop kozak_in && docker-compose up -d kozak_in'
   only:
     - master
