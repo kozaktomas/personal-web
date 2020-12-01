@@ -11,6 +11,10 @@ test:
 	php vendor/bin/tester tests/
 	php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
+cmd:
+	docker-compose up -d
+	docker-compose exec web bash
+
 stop:
 	docker-compose stop
 
