@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kozak\Tomas\App\Presenters;
 
+use Kozak\Tomas\App\Model\AgeCalculator;
 use Kozak\Tomas\App\Model\CaptchaDto;
 use Kozak\Tomas\App\Model\CaptchaException;
 use Kozak\Tomas\App\Model\CaptchaService;
@@ -16,8 +17,9 @@ final class HomepagePresenter extends BasePresenter
 {
 
 	public function __construct(
+	    private AgeCalculator $ageCalculator,
 	    private Mailer $mailer,
-        private CaptchaService $captchaService
+        private CaptchaService $captchaService,
     ) {
 		parent::__construct();
 	}
@@ -25,7 +27,7 @@ final class HomepagePresenter extends BasePresenter
 	protected function beforeRender(): void
 	{
 		parent::beforeRender();
-		$this->template->age = $this->getAge();
+		$this->template->age = $this->ageCalculator->getAge();
 		$this->template->googleAnalytics = !(bool)\getenv('DEV');
 	}
 
@@ -100,32 +102,6 @@ final class HomepagePresenter extends BasePresenter
 		}
 		$this->flashMessage('Wonderful job! Thank You. Your Message has been submitted and I will respond ASAP!');
 		$this->redirect('this');
-	}
-
-	/**
-	 * @return int
-	 * @throws \Exception
-	 */
-	private function getAge(): int
-	{
-		$tz = new \DateTimeZone('Europe/Prague');
-		$born = \DateTime::createFromFormat('d/m/Y', '21/04/1991', $tz);
-		$now = new \DateTime('now', $tz);
-
-		if (!$born instanceof \DateTime) {
-			throw new \Exception('Could not parse date of birth.');
-		}
-		if (!$born instanceof \DateTime) {
-			throw new \Exception('Could not create now DateTime.');
-		}
-
-		$age = $born->diff($now);
-
-		if ($age === false) {
-		    throw new \Exception('Could not calculate age');
-        }
-
-		return $age->y;
 	}
 
 	/**

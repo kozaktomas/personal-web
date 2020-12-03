@@ -15,3 +15,4 @@ services:
 	router: @routerFactory::createRouter
 	- Kozak\Tomas\App\Model\Mailer(::\getenv('SENDGRID_API_KEY'))
 	- Kozak\Tomas\App\Model\CaptchaService
+	- Kozak\Tomas\App\Model\AgeCalculator
