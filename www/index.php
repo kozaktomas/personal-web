@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-use Nette\DI\Container;
+use Kozak\Tomas\App\Bootstrap;
+use Nette\Application\Application;
 
-/** @var Container $container */
-$container = require __DIR__ . '/../app/bootstrap.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-$container->getService('application')->run();
+$container = Bootstrap::boot();
+$application = $container->getByType(Application::class);
+$application->run();

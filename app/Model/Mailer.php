@@ -4,7 +4,7 @@ namespace Kozak\Tomas\App\Model;
 
 use SendGrid\Mail\Mail;
 
-class Mailer
+final class Mailer
 {
 
 	private const

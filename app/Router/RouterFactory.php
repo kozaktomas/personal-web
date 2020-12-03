@@ -6,16 +6,9 @@ use Nette,
 	Nette\Application\Routers\RouteList,
 	Nette\Application\Routers\SimpleRouter;
 
-
-/**
- * Router factory.
- */
 class RouterFactory
 {
 
-	/**
-	 * @return Nette\Routing\Router
-	 */
 	public function createRouter(): Nette\Routing\Router
 	{
 		$router = new RouteList();

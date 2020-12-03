@@ -2,19 +2,21 @@
 
 declare(strict_types=1);
 
+use Kozak\Tomas\App\Bootstrap;
 use Nette\Application\IPresenterFactory;
 use Nette\Application\Responses\TextResponse;
 use Nette\DI\Container;
 use Tester\Assert;
 use Tester\TestCase;
 
+require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/bootstrap.php';
 
 /** @var Container $container */
-$container = require __DIR__ . '/../app/bootstrap.php';
+$container = Bootstrap::boot();
 
 /** @var IPresenterFactory $presenterFactory */
-$presenterFactory = $container->getByType('Nette\Application\IPresenterFactory');
+$presenterFactory = $container->getByType(IPresenterFactory::class);
 
 final class UiTests extends TestCase {
 

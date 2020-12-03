@@ -5,7 +5,7 @@ namespace Kozak\Tomas\App\Presenters;
 use Nette,
 	Tracy\Debugger;
 
-class ErrorPresenter extends BasePresenter
+final class ErrorPresenter extends BasePresenter
 {
 
 	/**

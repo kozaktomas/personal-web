@@ -12,17 +12,14 @@ use Kozak\Tomas\App\Model\MailerException;
 use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 
-class HomepagePresenter extends BasePresenter
+final class HomepagePresenter extends BasePresenter
 {
-	private Mailer $mailer;
 
-	private CaptchaService $captchaService;
-
-	public function __construct(Mailer $mailer, CaptchaService $captchaService)
-	{
+	public function __construct(
+	    private Mailer $mailer,
+        private CaptchaService $captchaService
+    ) {
 		parent::__construct();
-		$this->mailer = $mailer;
-		$this->captchaService = $captchaService;
 	}
 
 	protected function beforeRender(): void
