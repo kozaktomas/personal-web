@@ -25,10 +25,6 @@ final class AgeCalculator
 
         $age = $born->diff($point);
 
-        if ($age === false) {
-            throw new AgeCalculationException('Could not calculate age');
-        }
-
         return $age->y;
     }
 
