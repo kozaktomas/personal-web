@@ -23,7 +23,7 @@ test:
     - mkdir -p temp/sessions
     - mkdir -p temp/data
     - mkdir -p log
-    - php vendor/bin/tester -c tests/php.ini tests/
+    - php vendor/bin/tester -c tests/unit/php.ini tests/unit/
     - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
 build:

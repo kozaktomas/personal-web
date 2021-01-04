@@ -9,7 +9,7 @@ use Nette\DI\Container;
 use Tester\Assert;
 use Tester\TestCase;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 require __DIR__ . '/bootstrap.php';
 
 /** @var Container $container */
