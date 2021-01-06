@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  web:
+      image: ${CI_REGISTRY_IMAGE}:latest
+      env_file:
+        - dev.env
+  e2e:
+      image: cypress/included:3.4.0
+      command: ["--env", "APP_BASE_URL=http://web:80"]
+      working_dir: /e2e
+      depends_on:
+        - web
+      volumes:
+        - ./tests/e2e:/e2e

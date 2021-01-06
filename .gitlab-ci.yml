@@ -1,6 +1,7 @@
 stages:
   - test
   - build
+  - e2e
   - deploy
 
 services:
@@ -38,6 +39,22 @@ build:
     - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     - docker push $CI_REGISTRY_IMAGE:latest
+
+e2e:
+  image: docker/compose:latest
+  stage: e2e
+  services:
+    - docker:dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+  artifacts:
+    paths:
+      - tests/e2e/cypress/videos/app.js.mp4
+    expire_in: 1 week
+  script:
+    - docker-compose -f docker-compose-ci-e2e.yml up -d web
+    - docker-compose -f docker-compose-ci-e2e.yml run e2e
 
 deploy:
   image: alpine:3.9
