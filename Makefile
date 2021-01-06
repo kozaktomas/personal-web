@@ -3,8 +3,10 @@ up:
 	mkdir -p temp/cache
 	mkdir -p temp/sessions
 	mkdir -p log
-	composer install
+	chmod -R 777 temp/
+	chmod -R 777 log/
 	docker-compose up -d
+	docker-compose exec web composer install
 	@echo "App is running on http://localhost:8091"
 
 prerelease: test e2e
