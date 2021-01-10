@@ -6,7 +6,7 @@ services:
         - dev.env
   e2e:
       image: cypress/included:3.4.0
-      command: ["--env", "APP_BASE_URL=http://web:80"]
+      command: ["--env", "APP_BASE_URL=${APP_URL}"]
       working_dir: /e2e
       depends_on:
         - web
