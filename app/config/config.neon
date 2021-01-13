@@ -1,6 +1,28 @@
 php:
 	date.timezone: Europe/Prague
 
+http:
+	csp:
+		default-src:
+			- self
+			- https://fonts.googleapis.com
+			- https://imageshack.com
+			- https://imagizer.imageshack.com
+			- https://64.media.tumblr.com
+			- https://66.media.tumblr.com
+			- https://fonts.gstatic.com
+			- https://cdn.jsdelivr.net
+		style-src:
+			- self
+			- unsafe-inline
+			- https://fonts.googleapis.com
+		script-src:
+			- self
+			- nonce
+			- https://cdn.jsdelivr.net
+		frame-src:
+			- https://www.youtube.com
+
 application:
 	errorPresenter: Error
 	mapping:
