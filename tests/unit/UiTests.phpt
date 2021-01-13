@@ -41,6 +41,7 @@ final class UiTests extends TestCase {
     {
         $response = $this->sendRequest('Homepage', 'resume', 'GET');
         $html = (string) $response->getSource();
+        Assert::contains('ShipMonk', $html);
         Assert::contains('Kiwi.com', $html);
         Assert::contains('Dixons Carphone plc', $html);
         Assert::contains('Monitoring', $html);
