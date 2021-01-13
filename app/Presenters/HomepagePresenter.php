@@ -28,7 +28,6 @@ final class HomepagePresenter extends BasePresenter
 	{
 		parent::beforeRender();
 		$this->template->age = $this->ageCalculator->getAge();
-		$this->template->googleAnalytics = !(bool)\getenv('DEV');
 	}
 
 	public function renderContact(): void
