@@ -15,16 +15,16 @@ test:
 	docker-compose exec web php vendor/bin/tester -c tests/unit/php.ini tests/unit/
 	docker-compose exec web php vendor/bin/phpstan analyse -c phpstan.neon -l max app
 
-e2e: up
+e2e:
 	@echo "Running E2E tests"
 	docker-compose run e2e
 
-e2e-local-open: up
+e2e-local-open:
 	@echo "npm needs to be installed"
 	npm install --prefix tests/e2e
 	node tests/e2e/node_modules/.bin/cypress open --env APP_BASE_URL=http://localhost:8091 -P tests/e2e/
 
-e2e-local-run: up
+e2e-local-run:
 	@echo "npm needs to be installed"
 	npm install --prefix tests/e2e
 	node tests/e2e/node_modules/.bin/cypress run --env APP_BASE_URL=http://localhost:8091 -P tests/e2e/
