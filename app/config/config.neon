@@ -20,6 +20,7 @@ http:
 			- self
 			- nonce
 			- https://cdn.jsdelivr.net
+			- https://www.googletagmanager.com
 		frame-src:
 			- https://www.youtube.com
 
