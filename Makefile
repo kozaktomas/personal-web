@@ -37,6 +37,6 @@ stop:
 	docker-compose stop
 
 clean:
+	docker-compose exec web rm -rf temp/
+	docker-compose exec web rm -rf log/
 	docker-compose down
-	rm -rf temp/
-	rm -rf log/
