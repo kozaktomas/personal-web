@@ -16,6 +16,7 @@ describe('App test', () => {
         cy.contains('RESUMÉ').click()
         cy.url().should('include', '/resume')
         cy.contains('PHP')
+        cy.contains('Seznam.cz')
         cy.contains('ShipMonk')
         cy.contains('fulfillment')
     });
