@@ -39,12 +39,9 @@ describe('App test', () => {
         cy.contains('MY SETUP').click()
         cy.url().should('include', '/my-setup')
 
-        cy.contains('Software')
-        cy.contains('Google Chrome')
-        cy.contains('Spotify')
-        cy.contains('Dash')
-        cy.contains('Slack')
-        cy.contains('Postman')
+        cy.contains('MacBook')
+        cy.contains('Ryzen')
+        cy.contains('Synology')
     });
 
     it('Talks test', () => {
