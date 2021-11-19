@@ -28,7 +28,7 @@ final class ErrorPresenter extends BasePresenter
 
 		$code = 500;
 		if ($exception instanceof Nette\Application\BadRequestException) {
-			$code = $exception->getCode();
+			$code = intval($exception->getCode());
 		}
 
 		$this->setVariables($code);

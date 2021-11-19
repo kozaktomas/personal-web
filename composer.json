@@ -10,7 +10,7 @@
     },
     "require-dev": {
         "nette/tester": "~2.3",
-        "phpstan/phpstan-nette": "^0.12.9"
+        "phpstan/phpstan-nette": "^1.0"
     },
     "minimum-stability": "stable",
     "autoload": {
