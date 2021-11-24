@@ -41,7 +41,7 @@ test:
     - mkdir -p temp/data
     - mkdir -p log
     - php vendor/bin/tester -c tests/unit/php.ini tests/unit/
-    - php vendor/bin/phpstan analyse -c phpstan.neon -l max app
+    - php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M -l max app
 
 build:
   image: docker:stable

@@ -13,7 +13,7 @@ prerelease: test e2e
 
 test:
 	docker-compose exec web php vendor/bin/tester -c tests/unit/php.ini tests/unit/
-	docker-compose exec web php vendor/bin/phpstan analyse -c phpstan.neon -l max app
+	docker-compose exec web php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M -l max app
 
 e2e:
 	@echo "Running E2E tests"
