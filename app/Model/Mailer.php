@@ -2,6 +2,9 @@
 
 namespace Kozak\Tomas\App\Model;
 
+use Nette\Utils\Json;
+use Nette\Utils\JsonException;
+
 final class Mailer
 {
 
@@ -51,8 +54,9 @@ final class Mailer
             'content' => sprintf(self::MESSAGE_BODY, $now, $name, $email, $content),
         ];
 
-        $json = json_encode($msg);
-        if ($json === false) {
+        try {
+            $json = Json::encode($msg);
+        } catch (JsonException $e) {
             throw new MailerException('could not encode json with message');
         }
 
