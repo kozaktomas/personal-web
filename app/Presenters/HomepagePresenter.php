@@ -46,9 +46,6 @@ final class HomepagePresenter extends BasePresenter
 		];
 	}
 
-	/**
-	 * @return Form
-	 */
 	public function createComponentContactForm(): Form
 	{
 		$form = new Form();
@@ -57,7 +54,7 @@ final class HomepagePresenter extends BasePresenter
 		$form->addText('email', 'Email')
 			->setMaxLength(200);
 		$form->addTextArea('content', 'Content')
-			->setMaxLength(5000)
+			->setMaxLength(2000)
 			->setRequired('Write something.')
 			->addRule(Form::MIN_LENGTH, 'Your message has to be at least %d characters long', 5);
 		$form->addInteger('captcha', 'Result:')
@@ -73,10 +70,6 @@ final class HomepagePresenter extends BasePresenter
 		return $form;
 	}
 
-	/**
-	 * @param Form $form
-	 * @throws \SendGrid\Mail\TypeException
-	 */
 	private function contactFormSubmitted(Form $form): void
 	{
 		$values = $form->getValues();
@@ -94,7 +87,7 @@ final class HomepagePresenter extends BasePresenter
 		}
 
 		try {
-			$this->mailer->contactFormEmail($values->name, $values->email, $values->content);
+			$this->mailer->sendMessage($values->name, $values->email, $values->content);
 		} catch (MailerException $exception) {
 			$form->addError('Could not send message to Tomas. Please try to contact him via email.');
 			return;
@@ -103,9 +96,6 @@ final class HomepagePresenter extends BasePresenter
 		$this->redirect('this');
 	}
 
-	/**
-	 * @throws AbortException
-	 */
 	public function actionSpeeches(): void
 	{
 		$this->redirectPermanent('talks');

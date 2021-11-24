@@ -2,56 +2,60 @@
 
 namespace Kozak\Tomas\App\Model;
 
-use SendGrid\Mail\Mail;
-
 final class Mailer
 {
 
-	private const
-		EMAIL_FROM = 'site@kozak.in',
-		EMAIL_FROM_NAME = 'Contact form',
-		EMAIL_TO = 'kozak@talko.cz',
-		EMAIL_SUBJECT = 'Contact from - Kozak.in',
-		EMAIL_BODY = "<b>Name:</b> %s<br><b>Email:</b> %s<br><br>%s";
+    private const
+        MESSAGE_BOT_NAME = 'kozak.in BOT',
+        MESSAGE_BODY = "__**NEW MESSAGE - %s**__\n**Name:** %s\n**Email:** %s\n\n%s";
 
-	/** @var string */
-	private $sendgridApiKey;
+    private string $webhookUrl;
 
-	/**
-	 * @param string $sendgridApiKey
-	 */
-	public function __construct(string $sendgridApiKey)
-	{
-		$this->sendgridApiKey = $sendgridApiKey;
-	}
+    public function __construct(string $webhookUrl)
+    {
+        $this->webhookUrl = $webhookUrl;
+    }
 
-	/**
-	 * @param string $name
-	 * @param string $email
-	 * @param string $content
-	 * @throws MailerException
-	 * @throws \SendGrid\Mail\TypeException
-	 */
-	public function contactFormEmail(string $name, string $email, string $content): void
-	{
-		$message = new Mail();
-		$message->setFrom(self::EMAIL_FROM, self::EMAIL_FROM_NAME);
-		$message->setSubject(self::EMAIL_SUBJECT);
-		$message->addTo(self::EMAIL_TO, self::EMAIL_TO);
-		$message->addContent(
-			'text/html',
-			\sprintf(self::EMAIL_BODY, $name, $email, $content)
-		);
-		$sendgrid = $this->getMailer();
-		try {
-			$sendgrid->send($message);
-		} catch (\Exception $e) {
-			throw new MailerException('Could not send email');
-		}
-	}
+    /**
+     * @throws MailerException
+     */
+    public function sendMessage(string $name, string $email, string $content): void
+    {
+        $payload = $this->buildMessage($name, $email, $content);
 
-	private function getMailer(): \SendGrid
-	{
-		return new \SendGrid($this->sendgridApiKey);
-	}
+        $ch = curl_init($this->webhookUrl);
+        if ($ch === false) {
+            throw new MailerException('could not create curl object');
+        }
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($code > 299) {
+            throw new MailerException('could not send message');
+        }
+    }
+
+    /**
+     * @throws MailerException
+     */
+    private function buildMessage(string $name, string $email, string $content): string
+    {
+        $now = (new \DateTime())->format('Y-m-d H:i');
+        $msg = [
+            'username' => self::MESSAGE_BOT_NAME,
+            'content' => sprintf(self::MESSAGE_BODY, $now, $name, $email, $content),
+        ];
+
+        $json = json_encode($msg);
+        if ($json === false) {
+            throw new MailerException('could not encode json with message');
+        }
+
+        return $json;
+    }
 }

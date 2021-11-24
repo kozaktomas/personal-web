@@ -35,6 +35,6 @@ session:
 services:
 	routerFactory: Kozak\Tomas\App\Router\RouterFactory
 	router: @routerFactory::createRouter
-	- Kozak\Tomas\App\Model\Mailer(::\getenv('SENDGRID_API_KEY'))
+	- Kozak\Tomas\App\Model\Mailer(::\getenv('DISCORD_WEBHOOK_URL'))
 	- Kozak\Tomas\App\Model\CaptchaService
 	- Kozak\Tomas\App\Model\AgeCalculator
