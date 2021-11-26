@@ -19,6 +19,8 @@ class RouterFactory
 		$router[] = new Nette\Application\Routers\Route('/speeches', 'Homepage:speeches');
 		$router[] = new Nette\Application\Routers\Route('/talks', 'Homepage:talks');
 
+		$router[] = new Nette\Application\Routers\Route('/matrics', 'Monitoring:default');
+
 		$router[] = new SimpleRouter('Homepage:default');
 		return $router;
 	}

@@ -11,6 +11,8 @@ services:
         - .env
       environment:
         DEV: "true"
+  redis:
+      image: redis:latest
   e2e:
       image: cypress/included:3.4.0
       command: ["--env", "APP_BASE_URL=http://web:80"]

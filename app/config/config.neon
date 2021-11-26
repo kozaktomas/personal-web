@@ -35,6 +35,7 @@ session:
 services:
 	routerFactory: Kozak\Tomas\App\Router\RouterFactory
 	router: @routerFactory::createRouter
-	- Kozak\Tomas\App\Model\Mailer(::\getenv('DISCORD_WEBHOOK_URL'))
+	- Kozak\Tomas\App\Model\Mailer(%discord_webhook_url%)
 	- Kozak\Tomas\App\Model\CaptchaService
 	- Kozak\Tomas\App\Model\AgeCalculator
+	- Kozak\Tomas\App\Model\Monitor(%monitor_redis_host%, %monitor_redis_port%, %monitor_redis_database%)
