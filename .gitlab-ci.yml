@@ -24,7 +24,7 @@ cache:
       - tests/e2e/cypress/videos/app.js.mp4
     expire_in: 1 week
   script:
-    - docker-compose -f docker-compose-ci-e2e.yml up -d web
+    - docker-compose -f docker-compose-ci-e2e.yml up -d web redis
     - docker-compose -f docker-compose-ci-e2e.yml run e2e
 
 test:
