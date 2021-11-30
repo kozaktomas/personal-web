@@ -35,6 +35,9 @@ final class CaptchaDto
             $this->upperLimit;
     }
 
+    /**
+     * @throws CaptchaException
+     */
     public static function deserialize(string $serialized): self
     {
         $parts = explode('|', $serialized);
@@ -43,10 +46,10 @@ final class CaptchaDto
         }
 
         return new self(
-            (int) $parts[1],
-            (int) $parts[0],
-            (int) $parts[2],
-            (int) $parts[3],
+            (int)$parts[1],
+            (int)$parts[0],
+            (int)$parts[2],
+            (int)$parts[3],
         );
     }
 }

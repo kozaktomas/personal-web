@@ -132,7 +132,8 @@ final class CaptchaService
     /**
      * Checks integration result
      */
-    public function isCorrect(CaptchaDto $dto, int $result): bool {
+    public function isCorrect(CaptchaDto $dto, int $result): bool
+    {
         $calculation = $this->solvePolynom(
             $dto->d3,
             $dto->d0,

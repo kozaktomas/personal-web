@@ -10,8 +10,8 @@ use Nette\Bridges\ApplicationLatte\Template;
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
-	protected function startup()
-	{
-		parent::startup();
-	}
+    protected function startup()
+    {
+        parent::startup();
+    }
 }

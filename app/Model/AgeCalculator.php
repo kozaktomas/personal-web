@@ -17,7 +17,7 @@ final class AgeCalculator
         if ($point === null) {
             $point = new DateTimeImmutable('now', $tz);
         }
-        
+
         $born = DateTime::createFromFormat('d/m/Y', self::BORN_DATE, $tz);
         if (!$born instanceof DateTime) {
             throw new AgeCalculationException('Could not parse date of birth.');
