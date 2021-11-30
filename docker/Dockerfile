@@ -1,4 +1,6 @@
-FROM php:8.0-apache-buster
+FROM php:8.1-apache-buster
+
+RUN apt-get update
 
 RUN pecl install xdebug
 
@@ -7,7 +9,7 @@ RUN pecl install -o -f redis \
   && docker-php-ext-enable redis
 RUN apt-get install redis-tools -y
 
-RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev \
+RUN apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
