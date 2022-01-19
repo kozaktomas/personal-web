@@ -7,7 +7,7 @@ services:
   redis:
       image: redis:latest
   e2e:
-      image: cypress/included:3.4.0
+      image: cypress/included:9.3.1
       command: ["--env", "APP_BASE_URL=${APP_URL}"]
       working_dir: /e2e
       depends_on:
