@@ -28,7 +28,7 @@ describe('App test', () => {
 
         cy.get('input[name="name"]').type('My awesome name')
         cy.get('textarea[name="content"]').type('This is my message')
-        cy.get('input[name="captcha"]').type('666')
+        cy.get('input[name="captcha"]').type('6666')
 
         cy.contains('SEND MESSAGE').click()
         cy.contains('Your result is incorrect')
