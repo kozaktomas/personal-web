@@ -19,6 +19,7 @@ describe('App test', () => {
         cy.contains('Seznam.cz')
         cy.contains('ShipMonk')
         cy.contains('fulfillment')
+        cy.contains('Showmax')
     });
 
     it('Contact test', () => {
