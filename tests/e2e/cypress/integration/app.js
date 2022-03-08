@@ -53,6 +53,9 @@ describe('App test', () => {
         cy.contains('MONITORING INTRODUCTION')
         cy.contains('Source code')
         cy.contains('Slides')
+        cy.contains('Online stream')
+        cy.contains('LIFE WITH PACKAGE MANAGER')
+        cy.contains('MONITORING INTRODUCTION 2')
     });
 
 });
