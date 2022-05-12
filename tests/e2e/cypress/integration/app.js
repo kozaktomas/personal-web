@@ -39,10 +39,6 @@ describe('App test', () => {
         cy.visit(BASE_URL)
         cy.contains('MY SETUP').click()
         cy.url().should('include', '/my-setup')
-
-        cy.contains('MacBook')
-        cy.contains('Ryzen')
-        cy.contains('Synology')
     });
 
     it('Talks test', () => {
