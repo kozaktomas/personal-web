@@ -6,7 +6,7 @@
   "require": {
     "php": ">= 8.0",
     "ext-curl": "*",
-    "nette/nette": "~3.0",
+    "nette/nette": "~3.1",
     "promphp/prometheus_client_php": "^2.4"
   },
   "require-dev": {
