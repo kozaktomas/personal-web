@@ -2,24 +2,25 @@
 
 namespace Kozak\Tomas\App\Router;
 
-use Nette,
-    Nette\Application\Routers\RouteList,
-    Nette\Application\Routers\SimpleRouter;
+use Nette\Application\Routers\Route;
+use Nette\Application\Routers\RouteList;
+use Nette\Application\Routers\SimpleRouter;
+use Nette\Routing\Router;
 
 class RouterFactory
 {
 
-    public function createRouter(): Nette\Routing\Router
+    public function createRouter(): Router
     {
         $router = new RouteList();
-        $router[] = new Nette\Application\Routers\Route('/', 'Homepage:default');
-        $router[] = new Nette\Application\Routers\Route('/resume', 'Homepage:resume');
-        $router[] = new Nette\Application\Routers\Route('/contact', 'Homepage:contact');
-        $router[] = new Nette\Application\Routers\Route('/my-setup', 'Homepage:setup');
-        $router[] = new Nette\Application\Routers\Route('/speeches', 'Homepage:speeches');
-        $router[] = new Nette\Application\Routers\Route('/talks', 'Homepage:talks');
+        $router[] = new Route('/', 'Homepage:default');
+        $router[] = new Route('/resume', 'Homepage:resume');
+        $router[] = new Route('/contact', 'Homepage:contact');
+        $router[] = new Route('/my-setup', 'Homepage:setup');
+        $router[] = new Route('/speeches', 'Homepage:speeches');
+        $router[] = new Route('/talks', 'Homepage:talks');
 
-        $router[] = new Nette\Application\Routers\Route('/metrics', 'Monitoring:default');
+        $router[] = new Route('/metrics', 'Monitoring:default');
 
         $router[] = new SimpleRouter('Homepage:default');
         return $router;
