@@ -17,9 +17,9 @@ final class HomepagePresenter extends BasePresenter
 {
 
     public function __construct(
-        private AgeCalculator  $ageCalculator,
-        private Mailer         $mailer,
-        private CaptchaService $captchaService,
+        private readonly AgeCalculator  $ageCalculator,
+        private readonly Mailer         $mailer,
+        private readonly CaptchaService $captchaService,
     )
     {
         parent::__construct();
@@ -99,6 +99,7 @@ final class HomepagePresenter extends BasePresenter
 
     public function actionSpeeches(): void
     {
+        Debugger::log("Speeches called - deprecated");
         $this->redirectPermanent('talks');
     }
 }

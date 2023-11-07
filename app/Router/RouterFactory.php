@@ -20,6 +20,7 @@ class RouterFactory
         $router[] = new Route('/speeches', 'Homepage:speeches');
         $router[] = new Route('/talks', 'Homepage:talks');
 
+        $router[] = new Route('/probe', 'Monitoring:probe');
         $router[] = new Route('/metrics', 'Monitoring:default');
 
         $router[] = new SimpleRouter('Homepage:default');

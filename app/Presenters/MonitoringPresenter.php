@@ -3,6 +3,7 @@
 namespace Kozak\Tomas\App\Presenters;
 
 use Kozak\Tomas\App\Model\Monitor;
+use Nette\Application\AbortException;
 use Nette\Application\Responses\CallbackResponse;
 use Nette\Http\IRequest;
 use Nette\Http\Response;
@@ -12,7 +13,7 @@ class MonitoringPresenter extends BasePresenter
 {
 
     public function __construct(
-        private Monitor $monitor,
+        private readonly Monitor $monitor,
     )
     {
         parent::__construct();
@@ -28,5 +29,15 @@ class MonitoringPresenter extends BasePresenter
                 }
             )
         );
+    }
+
+    /**
+     * @throws AbortException
+     */
+    public function actionProbe(): void
+    {
+        $this->sendJson([
+            'status' => 'ok'
+        ]);
     }
 }
