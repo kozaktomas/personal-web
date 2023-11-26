@@ -7,7 +7,7 @@ up:
 	chmod -R 777 log/
 	docker-compose up -d
 	docker-compose exec web composer install
-	@echo "App is running on http://localhost:8091"
+	@echo "App is running on http://localhost:8081"
 
 prerelease: upload-static test e2e
 
@@ -22,12 +22,12 @@ e2e:
 e2e-local-open:
 	@echo "npm needs to be installed"
 	npm install --prefix tests/e2e
-	node tests/e2e/node_modules/.bin/cypress open --env APP_BASE_URL=http://localhost:8091 -P tests/e2e/
+	node tests/e2e/node_modules/.bin/cypress open --env APP_BASE_URL=http://localhost:8081 -P tests/e2e/
 
 e2e-local-run:
 	@echo "npm needs to be installed"
 	npm install --prefix tests/e2e
-	node tests/e2e/node_modules/.bin/cypress run --env APP_BASE_URL=http://localhost:8091 -P tests/e2e/
+	node tests/e2e/node_modules/.bin/cypress run --env APP_BASE_URL=http://localhost:8081 -P tests/e2e/
 
 cmd:
 	docker-compose up -d

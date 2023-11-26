@@ -10,6 +10,7 @@ use Kozak\Tomas\App\Model\CaptchaException;
 use Kozak\Tomas\App\Model\CaptchaService;
 use Kozak\Tomas\App\Model\Mailer;
 use Kozak\Tomas\App\Model\MailerException;
+use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Form;
 use Tracy\Debugger;
 
@@ -101,5 +102,39 @@ final class HomepagePresenter extends BasePresenter
     {
         Debugger::log("Speeches called - deprecated");
         $this->redirectPermanent('talks');
+    }
+
+    public function actionRobots(): void
+    {
+        $robotsTxt = "User-agent: *\nAllow: /";
+        $this->sendResponse(new TextResponse($robotsTxt));
+    }
+
+    public function actionSitemap(): void
+    {
+        $pages = [
+            "https://kozak.in",
+            "https://kozak.in/resume",
+            "https://kozak.in/contact",
+            "https://kozak.in/my-setup",
+            "https://kozak.in/talks",
+        ];
+
+        $xml = new \SimpleXMLElement(
+            data: '<urlset/>',
+            namespaceOrPrefix: 'ws',
+        );
+
+        $xml->addAttribute('xmlns:xmlns', 'http://url.to.namespace');
+
+        foreach ($pages as $page) {
+            $xml
+                ->addChild("url")
+                ->addChild("loc", $page);
+        }
+
+
+        $this->getHttpResponse()->setHeader("Content-Type", "application/xml");
+        $this->sendResponse(new TextResponse($xml->asXML()));
     }
 }
