@@ -1,17 +1,13 @@
-FROM php:8.2-apache-bullseye
+FROM php:8.2-fpm-bookworm
 
 RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev
-
-ADD docker/virtual_host_prod.conf /etc/apache2/sites-available/000-default.conf
-RUN a2enmod rewrite && a2enmod headers && a2enmod expires
-
-RUN pecl install -o -f redis \
-  && rm -rf /tmp/pear \
-  && docker-php-ext-enable redis
 
 # opcache
 RUN docker-php-ext-install opcache
 ADD docker/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# FPM settings
+ADD docker/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 # intl
 RUN docker-php-ext-configure intl \

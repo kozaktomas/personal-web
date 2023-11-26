@@ -20,9 +20,6 @@ final class Bootstrap
         $configurator->addConfig(__DIR__ . '/config/config.neon');
         $configurator->addStaticParameters([
             'discord_webhook_url' => getenv('DISCORD_WEBHOOK_URL'),
-            'monitor_redis_host' => getenv('MONITOR_REDIS_HOST'),
-            'monitor_redis_port' => (int)getenv('MONITOR_REDIS_PORT'),
-            'monitor_redis_database' => (int)getenv('MONITOR_REDIS_DATABASE')
         ]);
 
         return $configurator->createContainer();

@@ -10,7 +10,7 @@
                         <div class="media-left"><span class="sun">02/2022 - now</span></div>
                         <div class="media-body">
                             <div class="company-logo">
-                                <img src="/images/showmax-logo.png" alt="Seznam.cz logo">
+                                <img src="{$basePath}/images/showmax-logo.png" alt="Seznam.cz logo">
                             </div>
                             <h6>Devops engineer</h6>
                             <p>Showmax</p>
@@ -29,7 +29,7 @@
                         <div class="media-body">
 
                             <div class="company-logo">
-                                <img src="/images/seznam-logo.png" alt="Seznam.cz logo">
+                                <img src="{$basePath}/images/seznam-logo.png" alt="Seznam.cz logo">
                             </div>
                             <h6>Senior Devops/SRE engineer</h6>
                             <p>Seznam.cz</p>
@@ -51,7 +51,7 @@
                         <div class="media-body">
 
                             <div class="company-logo">
-                                <img src="/images/shipmonk-logo.png" alt="Shipmonk logo">
+                                <img src="{$basePath}/images/shipmonk-logo.png" alt="Shipmonk logo">
                             </div>
                             <h6>Developer</h6>
                             <p>ShipMonk</p>
@@ -72,7 +72,7 @@
                         <div class="media-left"><span class="sun">11/2016 - 07/2020</span></div>
                         <div class="media-body">
 
-                            <div class="company-logo"><img src="/images/kiwi-logo.png" alt="Kiwi logo"></div>
+                            <div class="company-logo"><img src="{$basePath}/images/kiwi-logo.png" alt="Kiwi logo"></div>
                             <h6>Senior developer / Technical lead</h6>
                             <p>Kiwi.com</p>
                             <p>Brno, Czech Republic</p>
@@ -96,7 +96,7 @@
                         <div class="media-left"><span class="sun">9/2014 - 10/2016</span></div>
                         <div class="media-body">
 
-                            <div class="company-logo"><img src="/images/dixons-logo.png" alt="Dixons logo"></div>
+                            <div class="company-logo"><img src="{$basePath}/images/dixons-logo.png" alt="Dixons logo"></div>
                             <h6>PHP Developer</h6>
                             <p>Dixons Carphone plc.</p>
                             <p>Brno, Czech Republic</p>
@@ -115,7 +115,7 @@
                         <div class="media-left"><span class="sun">3/2013 - 7/2014</span></div>
                         <div class="media-body">
 
-                            <div class="company-logo"><img src="/images/bos-logo.jpg" alt="Best one logo"></div>
+                            <div class="company-logo"><img src="{$basePath}/images/bos-logo.jpg" alt="Best one logo"></div>
                             <h6>Developer</h6>
                             <p>Best One Service s.r.o.</p>
                             <p>Brno, Czech Republic</p>
@@ -190,7 +190,7 @@
                     {include components/skillBar.latte,
                     'name' => 'GoLang',
                     'description' => 'Go mod, Gin, Mux, Kingpin, Cobra',
-                    'gif' => '/img/go.gif',
+                    'gif' => $basePath . "/img/go.gif",
                     }
                     {include components/skillBar.latte,
                     'name' => 'Javascript/Typescript',
@@ -322,7 +322,8 @@
                     <div class="media-left"><span class="sun">8/2014</span></div>
                     <div class="media-body">
 
-                        <div class="company-logo"><img src="/images/socialwifi-logo.png" alt="Socialwifi logo"></div>
+                        <div class="company-logo"><img src="{$basePath}/images/socialwifi-logo.png" alt="Socialwifi logo">
+                        </div>
                         <h6>Socialwifi.cz</h6>
                         <p>Brno, Czech Republic</p>
                         <p class="margin-top-10">

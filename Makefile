@@ -9,11 +9,11 @@ up:
 	docker-compose exec web composer install
 	@echo "App is running on http://localhost:8091"
 
-prerelease: test e2e
+prerelease: upload-static test e2e
 
 test:
-	docker-compose exec web php vendor/bin/tester -c tests/unit/php.ini tests/unit/
-	docker-compose exec web php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M -l max app
+	docker-compose exec php php vendor/bin/tester -c tests/unit/php.ini tests/unit/
+	docker-compose exec php php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M -l max app
 
 e2e:
 	@echo "Running E2E tests"
@@ -40,3 +40,6 @@ clean:
 	docker-compose exec web rm -rf temp/
 	docker-compose exec web rm -rf log/
 	docker-compose down
+
+upload-static:
+	rsync -auvz public root@49.13.69.212:/var/www/html/static/kozak-in/

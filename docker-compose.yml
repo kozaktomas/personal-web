@@ -1,23 +1,40 @@
 version: '3'
 services:
-  web:
-      build: docker
-      ports:
-          - "8091:80"
-      volumes:
-        - .:/var/www/html
-      env_file:
-        - dev.env
-        - .env
-      environment:
-        DEV: "true"
-  redis:
-      image: redis:latest
+  php:
+    build: docker
+    volumes:
+      - .:/var/www/html
+      - ./data/sock:/sock
+      - ./docker/zz-docker.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+      - ./docker/xdebug.conf:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    env_file:
+      - dev.env
+      - .env
+    environment:
+      DEV: "true"
+      PHP_IDE_CONFIG: serverName=localhost
+      HOSTNAME: "localhost:8080"
+  lb:
+    image: ghcr.io/kozaktomas/gophpfpm:main
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./public:/static/public
+      - ./data/sock:/sock
+    command:
+      - "--app=personal_web"
+      - "--port=8080"
+      - "--socket=/sock/php-fpm.sock"
+      - "--index-file=/var/www/html/app/index.php"
+      - "--static-folder=/static/public:/public"
+    depends_on:
+      - php
   e2e:
-      image: cypress/included:10.8.0
-      command: ["--env", "APP_BASE_URL=http://web:80"]
-      working_dir: /e2e
-      depends_on:
-        - web
-      volumes:
-        - ./tests/e2e:/e2e
+    image: cypress/included:10.8.0
+    command: ["--env", "APP_BASE_URL=http://lb:8080"]
+    working_dir: /e2e
+    depends_on:
+      - php
+      - lb
+    volumes:
+      - ./tests/e2e:/e2e

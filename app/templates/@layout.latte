@@ -13,25 +13,25 @@
     <meta name="keywords" content="tomas, kozak, tomas kozak, developer, programmer, php, docker, kubernetes, go">
 
     {* StyleSheets *}
-    <link n:nonce rel="stylesheet" href="/css/ionicons.min.css">
-    <link n:nonce rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <link n:nonce rel="stylesheet" href="/css/font-awesome.min.css">
-    <link n:nonce rel="stylesheet" href="/css/main.css">
-    <link n:nonce rel="stylesheet" href="/css/style.css">
-    <link n:nonce rel="stylesheet" href="/css/responsive.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/ionicons.min.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/bootstrap/bootstrap.min.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/font-awesome.min.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/main.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/style.css">
+    <link n:nonce rel="stylesheet" href="{$basePath}/css/responsive.css">
 
     {* FontsOnline *}
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link n:nonce href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
     {* JavaScripts *}
-    <script n:nonce src="/js/vendors/modernizr.js"></script>
+    <script n:nonce src="{$basePath}/js/vendors/modernizr.js"></script>
 
     {ifset header}{include header}{/ifset}
 
     {* favicons *}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{$basePath}/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{$basePath}/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{$basePath}/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
@@ -123,7 +123,7 @@
 
                                     {* Professional Details *}
                                     <h5 class="tittle">Professional Details</h5>
-                                    <img src="/images/me.jpg" class="img-responsive" alt="Tomas photo">
+                                    <img src="{$basePath}/images/me.jpg" class="img-responsive" alt="Tomas photo">
                                     <ul class="personal-info">
                                         <li>
                                             <p><span> Name</span> Tomáš Kozák </p>
@@ -249,11 +249,11 @@
     {* End Page Wrapper *}
 
     {* JavaScripts *}
-    <script n:nonce src="/js/vendors/jquery/jquery.min.js"></script>
-    <script n:nonce src="/js/vendors/bootstrap.min.js"></script>
-    <script n:nonce src="/js/vendors/owl.carousel.min.js"></script>
-    <script n:nonce src="/js/vendors/jquery.isotope.min.js"></script>
-    <script n:nonce src="/js/main.js"></script>
+    <script n:nonce src="{$basePath}/js/vendors/jquery/jquery.min.js"></script>
+    <script n:nonce src="{$basePath}/js/vendors/bootstrap.min.js"></script>
+    <script n:nonce src="{$basePath}/js/vendors/owl.carousel.min.js"></script>
+    <script n:nonce src="{$basePath}/js/vendors/jquery.isotope.min.js"></script>
+    <script n:nonce src="{$basePath}/js/main.js"></script>
 {/block}
 </body>
 </html>
