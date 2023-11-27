@@ -3,13 +3,11 @@ up:
 	mkdir -p temp/cache
 	mkdir -p temp/sessions
 	mkdir -p log
-	chmod -R 777 temp/
-	chmod -R 777 log/
-	docker-compose up -d
-	docker-compose exec web composer install
+	docker-compose up -d php lb
+	docker-compose exec php composer install
 	@echo "App is running on http://localhost:8081"
 
-prerelease: upload-static test e2e
+prerelease: test e2e upload-static
 
 test:
 	docker-compose exec php php vendor/bin/tester -c tests/unit/php.ini tests/unit/

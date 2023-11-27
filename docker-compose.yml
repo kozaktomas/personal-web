@@ -27,11 +27,12 @@ services:
       - "--index-file=/var/www/html/app/index.php"
       - "--static-folder=/static/public:/public"
       - "--access-log"
+      - "--fpm-pool-size=16"
     depends_on:
       - php
   e2e:
     image: cypress/included:10.8.0
-    command: ["--env", "APP_BASE_URL=http://lb:8081"]
+    command: ["--env", "APP_BASE_URL=http://lb:8080"]
     working_dir: /e2e
     depends_on:
       - php
