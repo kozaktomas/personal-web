@@ -55,4 +55,16 @@ describe('App test', () => {
         cy.contains('MONITORING INTRODUCTION 2')
     });
 
+    it('Sitemap XML file', () => {
+        cy.request({
+            url: BASE_URL + "/sitemap.xml",
+            method: "GET",
+        })
+    });
+
+    it('Robots TXT file', () => {
+        cy.visit(BASE_URL + "/robots.txt")
+        cy.contains('User-agent: *')
+        cy.contains('Allow: /')
+    });
 });
