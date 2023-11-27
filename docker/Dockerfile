@@ -3,8 +3,8 @@ FROM php:8.2-fpm-bookworm
 RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev
 
 # xdebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install xdebug \
+#    && docker-php-ext-enable xdebug
 
 # intl
 RUN docker-php-ext-configure intl \
