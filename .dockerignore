@@ -1,0 +1,7 @@
+/public
+/tests
+/log
+/temp
+phpstan.neon
+.gitlab-ci.yml
+dev.env
