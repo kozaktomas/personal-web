@@ -113,11 +113,11 @@ final class HomepagePresenter extends BasePresenter
     public function actionSitemap(): void
     {
         $pages = [
-            "https://kozak.in",
-            "https://kozak.in/resume",
-            "https://kozak.in/contact",
-            "https://kozak.in/my-setup",
-            "https://kozak.in/talks",
+            "", // homepage
+            "/resume",
+            "/contact",
+            "/my-setup",
+            "/talks",
         ];
 
         $xml = new \SimpleXMLElement(
@@ -130,7 +130,7 @@ final class HomepagePresenter extends BasePresenter
         foreach ($pages as $page) {
             $xml
                 ->addChild("url")
-                ->addChild("loc", $page);
+                ->addChild("loc", "https://kozak.in" . $page);
         }
 
 
