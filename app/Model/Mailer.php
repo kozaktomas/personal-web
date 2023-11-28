@@ -8,7 +8,7 @@ use Nette\Utils\JsonException;
 final class Mailer
 {
 
-    private const
+    private const string
         MESSAGE_BOT_NAME = 'kozak.in BOT',
         MESSAGE_BODY = "__**NEW MESSAGE - %s**__\n**Name:** %s\n**Email:** %s\n\n%s";
 

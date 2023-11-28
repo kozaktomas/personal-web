@@ -1,6 +1,6 @@
-FROM php:8.2-fpm-bookworm
+FROM php:8.3-fpm-bookworm
 
-RUN apt-get update && apt-get install -y zlib1g-dev git libpq-dev libzip-dev unzip libicu-dev
+RUN apt-get update && apt-get install -y unzip libicu-dev
 
 # opcache
 RUN docker-php-ext-install opcache
@@ -28,6 +28,8 @@ RUN mkdir -p /var/www/html/temp/cache \
     && mkdir -p /var/www/html/temp/data \
     && mkdir -p /var/www/html/log \
     && chmod -R 777 /var/www/html/temp \
-    && chmod -R 777 /var/www/html/log
+    && chmod -R 777 /var/www/html/log \
+    && apt-get purge -y libicu-dev \
+    && rm -r /var/lib/apt/lists
 
 RUN composer install --no-dev --optimize-autoloader && php -v

@@ -8,7 +8,7 @@ use Tracy\Logger;
 
 class AppLogger implements ILogger
 {
-    private const LOG_APP = 'kozak_in';
+    private const string LOG_APP = 'kozak_in';
 
     private static string $hash = '';
 

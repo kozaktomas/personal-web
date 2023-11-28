@@ -7,9 +7,9 @@ use DateTimeImmutable;
 
 final class AgeCalculator
 {
-    public const BORN_TIMEZONE = 'Europe/Prague';
+    public const string BORN_TIMEZONE = 'Europe/Prague';
 
-    private const BORN_DATE = '21/04/1991';
+    private const string BORN_DATE = '21/04/1991';
 
     public function getAge(?DateTimeImmutable $point = null): int
     {
