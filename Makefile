@@ -29,14 +29,14 @@ e2e-local-run:
 
 cmd:
 	docker-compose up -d
-	docker-compose exec web bash
+	docker-compose exec php bash
 
 stop:
 	docker-compose stop
 
 clean:
-	docker-compose exec web rm -rf temp/
-	docker-compose exec web rm -rf log/
+	docker-compose exec php rm -rf temp/
+	docker-compose exec php rm -rf log/
 	docker-compose down
 
 upload-static:
