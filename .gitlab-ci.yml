@@ -11,7 +11,7 @@ cache:
     - vendor/
 
 test:
-  image: php:8.3-cli
+  image: php:8.4-cli
   stage: test
   script:
     - apt-get update && apt-get install -y zlib1g-dev git libzip-dev unzip libicu-dev
