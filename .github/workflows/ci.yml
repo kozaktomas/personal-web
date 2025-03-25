@@ -9,9 +9,21 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  # Prediction job
+  prediction:
+    runs-on: ubuntu-latest
+    container:
+      image: golang:1.24
+    steps:
+      - name: Install horoskopycli
+        run : go install github.com/kozaktomas/horoskopycli@latest
+      - name : Run horoskopy
+        run : horoskopycli panna
+
   # Test job
   test:
     runs-on: ubuntu-latest
+    needs: prediction
     container:
       image: php:8.4-cli
     steps:
