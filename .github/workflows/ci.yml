@@ -9,6 +9,27 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  # Test job
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: php:8.4-cli
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies and prepare environment
+        run: |
+          apt-get update && apt-get install -y zlib1g-dev git libzip-dev unzip libicu-dev
+          docker-php-ext-configure intl && docker-php-ext-install intl
+          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+          php composer-setup.php --install-dir=/bin --filename=composer
+          composer install
+          mkdir -p temp/cache temp/sessions temp/data log
+      - name: Run unit tests
+        run: php vendor/bin/tester -c tests/unit/php.ini tests/unit/
+      - name: Run PHPStan
+        run: php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M -l max app
+  # Build job
   build:
     runs-on: ubuntu-latest
     permissions:
