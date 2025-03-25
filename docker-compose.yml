@@ -13,6 +13,7 @@ services:
     environment:
       DEV: "true"
       PHP_IDE_CONFIG: serverName=localhost
+      LIVE_TOKEN: live-secret
   lb:
     image: ghcr.io/kozaktomas/gophpfpm:main
     ports:

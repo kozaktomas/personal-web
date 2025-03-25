@@ -20,6 +20,8 @@ final class Bootstrap
         $configurator->addConfig(__DIR__ . '/config/config.neon');
         $configurator->addStaticParameters([
             'discord_webhook_url' => getenv('DISCORD_WEBHOOK_URL'),
+            'live_file' => __DIR__ . '/../temp/live.txt',
+            'live_token' => \getenv('LIVE_TOKEN'),
         ]);
 
         return $configurator->createContainer();

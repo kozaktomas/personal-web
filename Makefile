@@ -40,4 +40,4 @@ clean:
 	podman compose down
 
 upload-static:
-	rsync -auvz public root@49.13.69.212:/var/www/html/static/kozak-in/
+	rsync -auvz public root@prodvps:/root/apps/vps/static/static/kozak-in/

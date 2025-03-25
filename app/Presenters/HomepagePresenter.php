@@ -8,11 +8,14 @@ use Kozak\Tomas\App\Model\AgeCalculator;
 use Kozak\Tomas\App\Model\CaptchaDto;
 use Kozak\Tomas\App\Model\CaptchaException;
 use Kozak\Tomas\App\Model\CaptchaService;
+use Kozak\Tomas\App\Model\LiveService;
 use Kozak\Tomas\App\Model\Mailer;
 use Kozak\Tomas\App\Model\MailerException;
+use Nette\Application\BadRequestException;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Form;
 use Nette\Forms\Controls\BaseControl;
+use Nette\Utils\Json;
 use Tracy\Debugger;
 
 final class HomepagePresenter extends BasePresenter
@@ -22,6 +25,7 @@ final class HomepagePresenter extends BasePresenter
         private readonly AgeCalculator  $ageCalculator,
         private readonly Mailer         $mailer,
         private readonly CaptchaService $captchaService,
+        private readonly LiveService    $liveService,
     )
     {
         parent::__construct();
@@ -31,6 +35,7 @@ final class HomepagePresenter extends BasePresenter
     {
         parent::beforeRender();
         $this->template->age = $this->ageCalculator->getAge();
+        $this->template->live = $this->liveService->isLive();
     }
 
     public function renderContact(): void
@@ -147,5 +152,39 @@ final class HomepagePresenter extends BasePresenter
 
         $this->getHttpResponse()->setHeader("Content-Type", "application/xml");
         $this->sendResponse(new TextResponse($xml->asXML()));
+    }
+
+    public function actionLive(): void
+    {
+        if (!$this->getHttpRequest()->isMethod("POST")) {
+            throw new BadRequestException('Method Not Allowed', 405);
+        }
+
+        if (!$this->getHttpRequest()->getHeader("Authorization")) {
+            throw new BadRequestException('Unauthorized', 401);
+        }
+
+        $auth = \explode(" ", $this->getHttpRequest()->getHeader("Authorization"));
+        if (count($auth) !== 2 || $auth[0] !== "Bearer" || !$this->liveService->isTokenValid($auth[1])) {
+            throw new BadRequestException('Unauthorized', 401);
+        }
+
+        if (!$this->getHttpRequest()->getRawBody()) {
+            throw new BadRequestException('Invalid JSON body');
+        }
+
+        try {
+            $data = Json::decode($this->getHttpRequest()->getRawBody(), true);
+            if (!is_array($data) || !isset($data['live']) || !is_bool($data['live'])) {
+                throw new BadRequestException('Invalid JSON body');
+            }
+
+            $this->liveService->setLive($data['live']);
+        } catch (\JsonException) {
+            throw new BadRequestException('Invalid JSON body');
+        }
+        $this->getHttpResponse()->setCode(204);
+
+        $this->terminate();
     }
 }

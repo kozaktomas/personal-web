@@ -19,6 +19,7 @@ class RouterFactory
         $router[] = new Route('/my-setup', 'Homepage:setup');
         $router[] = new Route('/speeches', 'Homepage:speeches');
         $router[] = new Route('/talks', 'Homepage:talks');
+        $router[] = new Route('/api/live', 'Homepage:live');
 
         $router[] = new Route('/sitemap.xml', 'Homepage:sitemap');
         $router[] = new Route('/robots.txt', 'Homepage:robots');

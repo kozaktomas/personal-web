@@ -1,31 +1,7 @@
 php:
 	date.timezone: Europe/Prague
 
-http:
-	csp:
-		default-src:
-			- https://static.kozak.in
-			- https://fonts.googleapis.com
-			- https://imageshack.com
-			- https://imagizer.imageshack.com
-			- https://64.media.tumblr.com
-			- https://66.media.tumblr.com
-			- https://fonts.gstatic.com
-			- https://cdn.jsdelivr.net
-		style-src:
-			- unsafe-inline
-			- https://static.kozak.in
-			- https://fonts.googleapis.com
-		script-src:
-			- nonce
-			- https://static.kozak.in
-			- https://cdn.jsdelivr.net
-		frame-src:
-			- https://www.youtube.com
-		font-src:
-			- https://static.kozak.in
-			- https://fonts.gstatic.com
-			- https://cdn.jsdelivr.net
+
 
 application:
 	errorPresenter: Error
@@ -42,3 +18,4 @@ services:
 	- Kozak\Tomas\App\Model\Mailer(%discord_webhook_url%)
 	- Kozak\Tomas\App\Model\CaptchaService
 	- Kozak\Tomas\App\Model\AgeCalculator
+	- Kozak\Tomas\App\Model\LiveService(%live_file%, %live_token%)
