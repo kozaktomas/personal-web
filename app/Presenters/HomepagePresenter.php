@@ -12,6 +12,7 @@ use Kozak\Tomas\App\Model\Mailer;
 use Kozak\Tomas\App\Model\MailerException;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Form;
+use Nette\Forms\Controls\BaseControl;
 use Tracy\Debugger;
 
 final class HomepagePresenter extends BasePresenter
@@ -35,10 +36,12 @@ final class HomepagePresenter extends BasePresenter
     public function renderContact(): void
     {
         $captchaDto = $this->captchaService->getRandom();
-        $this
+        $captcha = $this
             ->getComponent('contactForm')
-            ->getComponent('captchaSerialized')
-            ->setValue($captchaDto->serialize());
+            ->getComponent('captchaSerialized');
+        if ($captcha instanceof BaseControl) {
+            $captcha->setValue($captchaDto->serialize());
+        }
 
         $this->template->captcha = [
             'd0' => $captchaDto->d0,
@@ -77,14 +80,22 @@ final class HomepagePresenter extends BasePresenter
         $values = $form->getValues();
 
         try {
+            if (!is_string($values->captchaSerialized)) {
+                throw new CaptchaException("Captcha serialized is not string");
+            }
             $captchaDto = CaptchaDto::deserialize($values->captchaSerialized);
-        } catch (CaptchaException $exception) {
+        } catch (CaptchaException) {
             $form->addError('It looks like you are trying hack my website. Please try something better!');
             return;
         }
 
-        if (!$this->captchaService->isCorrect($captchaDto, (int)$values->captcha)) {
+        if (!is_integer($values->captcha) || !$this->captchaService->isCorrect($captchaDto, $values->captcha)) {
             $form->addError('Your result is incorrect. Have you tried WolframAlpha?');
+            return;
+        }
+
+        if (!is_string($values->name) || !is_string($values->email) || !is_string($values->content)) {
+            $form->addError('Invalid form input data. Please try again.');
             return;
         }
 

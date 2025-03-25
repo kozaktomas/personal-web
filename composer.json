@@ -12,7 +12,8 @@
   },
   "require-dev": {
     "nette/tester": "~2.3",
-    "phpstan/phpstan-nette": "^1.0"
+    "phpstan/phpstan-nette": "^2",
+    "phpstan/phpstan": "^2"
   },
   "minimum-stability": "stable",
   "autoload": {
