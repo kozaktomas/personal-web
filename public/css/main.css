@@ -1821,15 +1821,20 @@ body {
 	background-color: #FFF;
 }
 
-.alert {
-	margin: 0;
+#live {
+	padding: 20px 0;
+	margin: 0 0 20px;
 	background-color: #FFF;
-	border-bottom: 2px solid #9c0c0c;
+	border: 2px solid #9c0c0c;
 	text-align: center;
 	font-weight: bold;
 }
 
-.alert:hover {
+#live:hover {
 	background-color: #9c0c0c;
+	color: #FFF;
+}
+
+#live:hover a {
 	color: #FFF;
 }

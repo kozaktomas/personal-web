@@ -50,17 +50,6 @@
     <div id="wrap">
         {* Content *}
         <main class="cd-main-content">
-            <div id="live" n:if="$live">
-                <a target="_blank" href="https://www.twitch.tv/worldofyaml">
-                    <div class="alert" role="alert">
-                        <img src="{$basePath}/images/red-circle.gif"
-                             alt="Blinking red circle"
-                             width="16px"
-                        />
-                        Tomas is live on Twitch!
-                    </div>
-                </a>
-            </div>
             <div id="content">
                 <div class="resume">
                     <div class="container">
@@ -123,6 +112,18 @@
                                         </div>
                                     {/foreach}
                                 </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <a href="https://www.twitch.tv/worldofyaml">
+                                    <div id="live" class="inside-sec">
+                                        <img src="{$basePath}/images/red-circle.gif"
+                                             alt="Blinking red circle"
+                                             width="16px"
+                                        />
+                                        Tomas is live on Twitch!
+                                    </div>
+                                </a>
                             </div>
 
                             {include content}
