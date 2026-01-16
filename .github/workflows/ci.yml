@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: prediction
     container:
-      image: php:8.4-cli
+      image: php:8.5-cli
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
