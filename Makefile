@@ -34,9 +34,11 @@ cmd:
 stop:
 	podman compose stop
 
-clean:
+cache:
 	podman compose exec php rm -rf temp/
 	podman compose exec php rm -rf log/
+
+clean: cache
 	podman compose down
 
 upload-static:
