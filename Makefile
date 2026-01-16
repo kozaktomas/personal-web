@@ -35,8 +35,10 @@ stop:
 	podman compose stop
 
 cache:
-	podman compose exec php rm -rf temp/
-	podman compose exec php rm -rf log/
+	podman compose exec php rm -rf temp/*
+	podman compose exec php rm -rf log/*
+	podman compose exec php mkdir -p temp/sessions
+	podman compose exec php mkdir -p log
 
 clean: cache
 	podman compose down
