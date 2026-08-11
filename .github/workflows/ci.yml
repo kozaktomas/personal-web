@@ -13,7 +13,7 @@ jobs:
   prediction:
     runs-on: ubuntu-latest
     container:
-      image: golang:1.24
+      image: golang:1.26
     steps:
       - name: Install horoskopycli
         run : go install github.com/kozaktomas/horoskopycli@latest
