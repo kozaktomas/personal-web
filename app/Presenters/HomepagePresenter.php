@@ -122,8 +122,9 @@ final class HomepagePresenter extends BasePresenter
 
     public function actionRobots(): void
     {
-        $robotsTxt = "User-agent: *\nAllow: /";
-        $this->sendResponse(new TextResponse($robotsTxt));
+        $this->getHttpResponse()->setContentType('text/plain; charset=utf-8');
+        echo "User-agent: *\nAllow: /";
+        $this->terminate();
     }
 
     public function actionSitemap(): void

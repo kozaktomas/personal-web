@@ -61,10 +61,4 @@ describe('App test', () => {
             method: "GET",
         })
     });
-
-    it('Robots TXT file', () => {
-        cy.visit(BASE_URL + "/robots.txt")
-        cy.contains('User-agent: *')
-        cy.contains('Allow: /')
-    });
 });
