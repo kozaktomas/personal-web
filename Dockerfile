@@ -2,8 +2,7 @@ FROM php:8.5-fpm-bookworm
 
 RUN apt-get update && apt-get install -y unzip libicu-dev
 
-# opcache
-RUN docker-php-ext-install opcache
+# opcache (compiled into the php:8.5 image, only needs configuring)
 ADD docker/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 # FPM settings
