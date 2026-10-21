@@ -1,9 +1,12 @@
-FROM php:8.5-fpm-bookworm
+FROM php:8.5.12-fpm-bookworm
 
 RUN apt-get update && apt-get install -y unzip libicu-dev
 
 # opcache (compiled into the php:8.5 image, only needs configuring)
 ADD docker/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+# security hardening
+ADD docker/security.ini /usr/local/etc/php/conf.d/security.ini
 
 # FPM settings
 ADD docker/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
