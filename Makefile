@@ -44,4 +44,4 @@ clean: cache
 	podman compose down
 
 upload-static:
-	rsync -auvz public root@prodvps:/root/apps/vps/static/static/kozak-in/
+	rsync -auvz --chmod=D2775,F664 public botel:/srv/botattic/kozak-in/static/static/kozak-in/
